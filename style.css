@@ -1,0 +1,136 @@
+
+/*-------------- Header layout---------------- */
+header {
+  background-color: #000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 9999;
+}
+
+/* Style for the IGDB logo image and sign in button */
+#igdb-img,
+button {
+  width: 60px;
+  height: 60px;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+#igdb-img {
+  margin-right: 20px;
+}
+
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Style for the search input */
+#input-search {
+  flex: 1;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  color: #333;
+  width: 100%;
+  max-width: 700px; /* limits the maximum width of the search input */
+}
+
+
+/*--------------------- Main layout -----------------*/
+
+/* #underHeader {
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  justify-content: center;
+}
+
+#input-search {
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+label {
+  margin-right: 10px;
+}
+
+select {
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.grid-info {
+  padding: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.btns button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.btns button:hover {
+  background-color: #333;
+} */
+
+
+
