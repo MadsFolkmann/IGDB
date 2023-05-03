@@ -23,20 +23,19 @@
           <button class="btns" id="btn-create-game">Create Game</button>
         </div>
         <div>
-        <label for="sort-games">Sort by:</label>
-        <select name="sort-games" id="sort-games">
-          <option value="">Not selected</option>
-          <option value="title">Title</option>
-          <option value="rating">Rating</option>
-        </select>
+          <label for="sort-games">Sort by:</label>
+          <select name="sort-games" id="sort-games">
+            <option value="">Not selected</option>
+            <option value="title">Title</option>
+            <option value="rating">Rating</option>
+          </select>
         </div>
       </section>
       <section id="games" class="grid-container"></section>
     </main>
 
-    
     <dialog id="dialog-create-game" class="dialog-game">
-      <img src="pictures/favicon.ico" alt="Logo" class="logo">
+      <img src="pictures/favicon.ico" alt="Logo" class="logo" />
       <h1>Create game</h1>
 
       <form action="" method="post" id="createGame">
@@ -93,7 +92,7 @@
 
         <input type="submit" value="Update" />
       </form>
-         <button class="close" type="button">X</button>
+      <button class="close" type="button">X</button>
     </dialog>
 
     <dialog id="dialog-delete-game">
@@ -105,6 +104,6 @@
       </form>
     </dialog>
 
-    <script src="scripts.js"></script>
+    <script src="js/scripts.js" type="module"></script>
   </body>
 </html>
