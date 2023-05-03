@@ -83,22 +83,45 @@ main {
 }
 
 /* ---------- grid container styling ---------- */
+/* .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    padding: 1em;
+}
 
+@media (min-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+} */
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1em;
-  padding: 1em;
+  gap: 1.5em;
+  padding: 0.6em;
 }
 
 .grid-item {
-  background-color: #948888;
+  background-color: #292626;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
   animation: fadeIn 0.5s;
   padding: 1.5em;
   cursor: pointer;
+  color: #f3ce13;
 }
 
 .grid-item:hover {
