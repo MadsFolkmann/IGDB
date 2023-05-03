@@ -53,3 +53,5 @@ function showGames(gameObject) {
 }
 
 console.log("hej");
+console.log("hej");
+console.log("hej");
