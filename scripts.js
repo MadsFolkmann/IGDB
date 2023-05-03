@@ -9,6 +9,8 @@ async function initApp() {
     updateGrid()
     
       document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
+     document.querySelector("#sort-games").addEventListener("change", sortBy);
+
 }
 
 
@@ -115,6 +117,19 @@ function showGames(gameObject) {
 console.log("hej");
 console.log("hej");
 console.log("hej");
+
+function sortBy(event){
+  const selectedValue = event.target.value;
+
+  if (selectedValue === "title"){
+    games.sort((game1, game2) => game1.title.localeCompare(game2.title));
+  } else if (selectedValue === "rating"){
+    games.sort((game1, game2) => game1.rating - game2.rating);
+  }
+
+  displayGames(games);
+}
+
 
 const igdbImg = document.querySelector("#igdb-img");
 
