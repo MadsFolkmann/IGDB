@@ -30,10 +30,8 @@
         </select>
       </section>
       <section id="games" class="grid-container"></section>
-
     </main>
 
-    
     <dialog id="dialog-create-game" class="dialog-game">
       <h1>Create game</h1>
 
@@ -56,11 +54,12 @@
 
         <input type="submit" value="Post" />
       </form>
+      <button class="close" type="button">X</button>
     </dialog>
 
     <!---------------- Dialog update post --------------->
 
-        <dialog id="dialog-update-game" class="dialog-game">
+    <dialog id="dialog-update-game" class="dialog-game">
       <h1>Update game</h1>
 
       <form id="form-update-game">
@@ -71,7 +70,15 @@
         <input type="text" id="update-title" name="title" placeholder="Type a new title" required /><br /><br />
 
         <label for="resume">Resume:</label><br />
-        <textarea id="resume" name="update-resume" rows="5" cols="50" maxlength="100" placeholder="Type the content of your new post" required></textarea
+        <textarea
+          id="resume"
+          name="update-resume"
+          rows="5"
+          cols="50"
+          maxlength="100"
+          placeholder="Type the content of your new post"
+          required
+        ></textarea
         ><br /><br />
 
         <label for="genre">Genre:</label>
@@ -79,10 +86,10 @@
 
         <label for="rating">Rating:</label>
         <input type="number" id="update-rating" name="rating" placeholder="Type a rating" required /><br /><br />
-        
-        <input type="submit" value="Update" >
-        </form>
-        </dialog>
+
+        <input type="submit" value="Update" />
+      </form>
+    </dialog>
 
     <dialog id="dialog-delete-game">
       <h2>Do you want to delete post?</h2>
@@ -92,8 +99,7 @@
         <button>Yes</button>
       </form>
       <button class="close" type="button">X</button>
-     </dialog>
-
+    </dialog>
 
     <script src="scripts.js"></script>
   </body>

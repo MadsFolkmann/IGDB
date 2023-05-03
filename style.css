@@ -156,42 +156,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* 
-.btns {
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn-update,
-.btn-delete {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-update {
-  background-color: #4CAF50;
-}
-
-.btn-delete {
-  background-color: #f44336;
-  margin-left: 10px;
-}
-
-.btn-update:hover,
-.btn-delete:hover {
-  background-color: #333;
-} 
-
-.grid-item h2:first-letter,
-.grid-item p:first-letter {
-    text-transform: uppercase;
-} */
-
 /* ---------- animations ---------- */
 /* fade in */
 @keyframes fadeIn {

@@ -11,8 +11,8 @@ async function initApp() {
   document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
   document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked);
   document.querySelector("#form-delete-game").addEventListener("click", deletePostClickedNo);
-    //Update//
-     document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
+  //Update//
+  document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
 }
 
 // ---------------------Create User/Posts-----------------------//
@@ -23,8 +23,8 @@ function showGameModal() {
 
   dialog.showModal();
 
-    document.querySelector("#createGame").addEventListener("submit", createGameClicked);
-    
+  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+
   // closes dialog when clicking outside the dialog
 }
 
@@ -59,7 +59,6 @@ async function createPost(title, image, rating) {
     updateGrid();
   }
 }
-
 
 function showGameModal() {
   const dialog = document.querySelector("#dialog-create-game");
@@ -118,8 +117,8 @@ function showGames(gameObject) {
     </article>
   `;
 
-    document.querySelector("#games").insertAdjacentHTML("beforeend", html);
-    document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject))
+  document.querySelector("#games").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
   document.querySelector("#games article:last-child .btn-delete").addEventListener("click", deleteClicked);
 
   function deleteClicked() {
@@ -131,46 +130,45 @@ function showGames(gameObject) {
 }
 
 function updateClicked(gameObject) {
-    const updateForm = document.querySelector("#form-update-game")
-    
-    updateForm.title.value = gameObject.title
-    updateForm.image.value = gameObject.image
-    updateForm.resume.value = gameObject.resume
-    updateForm.genre.value = gameObject.genre
-    updateForm.rating.value = gameObject.rating
-    document.querySelector("#form-update-game").setAttribute("data-id", gameObject.id);
-      document.querySelector("#dialog-update-game").showModal();
+  const updateForm = document.querySelector("#form-update-game");
+
+  updateForm.title.value = gameObject.title;
+  updateForm.image.value = gameObject.image;
+  updateForm.resume.value = gameObject.resume;
+  updateForm.genre.value = gameObject.genre;
+  updateForm.rating.value = gameObject.rating;
+  document.querySelector("#form-update-game").setAttribute("data-id", gameObject.id);
+  document.querySelector("#dialog-update-game").showModal();
 }
 
 function updateGameClicked(event) {
-    event.preventDefault();
-    const form = event.target;
-    const id = event.target.getAttribute("data-id");
+  event.preventDefault();
+  const form = event.target;
+  const id = event.target.getAttribute("data-id");
 
-    const title = form.title.value;
-    const rating = form.rating.value;
-    const image = form.image.value;
+  const title = form.title.value;
+  const rating = form.rating.value;
+  const image = form.image.value;
 
-    updateGame(id, title, rating, image);
-    document.querySelector("#dialog-update-game").close();
+  updateGame(id, title, rating, image);
+  document.querySelector("#dialog-update-game").close();
 }
 
 async function updateGame(id, title, rating, image) {
-    const updatedGame = {
-        title: title,
-        rating: rating,
-        image: image,
-    };
+  const updatedGame = {
+    title: title,
+    rating: rating,
+    image: image,
+  };
 
-    const json = JSON.stringify(updatedGame);
-    const response = await fetch(`${endpoint}/games/${id}.json`, { method: "PUT", body: json });
+  const json = JSON.stringify(updatedGame);
+  const response = await fetch(`${endpoint}/games/${id}.json`, { method: "PUT", body: json });
 
-    if (response.ok) {
-        console.log("Game succesfully updated in firbase🐱🐱");
+  if (response.ok) {
+    console.log("Game succesfully updated in firbase🐱🐱");
     updateGrid();
   }
 }
-
 
 //-------Refresh ved click af IGDB-------//
 const igdbImg = document.querySelector("#igdb-img");
@@ -178,3 +176,17 @@ const igdbImg = document.querySelector("#igdb-img");
 igdbImg.addEventListener("click", () => {
   location.reload();
 });
+
+//-------Kryds i dialogen-------//
+function showGameModal() {
+  const dialog = document.querySelector("#dialog-create-game");
+
+  dialog.showModal();
+
+  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+
+  // closes dialog when clicking outside the dialog
+  dialog.querySelector(".close").addEventListener("click", () => {
+    dialog.close();
+  });
+}
