@@ -10,11 +10,34 @@ async function initApp() {
 
   document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
   document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked);
-  document.querySelector("#form-delete-game").addEventListener("click", deletePostClickedNo);
+  document.querySelector("#form-delete-game").addEventListener("click", deleteGameClickedNo);
   //Update//
   document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
-     document.querySelector("#sort-games").addEventListener("change", sortBy);
+  document.querySelector("#sort-games").addEventListener("change", sortBy);
 
+  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+}
+
+// ---------------------filter games-----------------------//
+
+function inputSearchChanged(event) {
+  const value = event.target.value;
+  const postsToShow = searchGames(value);
+  displayGames(postsToShow);
+}
+
+function searchGames(searchValue) {
+  searchValue = searchValue.toLowerCase();
+
+  const results = games.filter(checkTitle);
+
+  function checkTitle(game) {
+    const title = game.title.toLowerCase();
+    return title.includes(searchValue);
+  }
+
+  return results;
 }
 
 // ---------------------Create User/Posts-----------------------//
@@ -67,12 +90,16 @@ function showGameModal() {
 
   dialog.showModal();
 
-  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+function deleteGameClicked(event) {
+  console.log(event);
+  const id = event.target.getAttribute("data-id");
+  deleteGame(id);
+  document.querySelector("#dialog-delete-game").close();
+}
 
-  // closes dialog when clicking outside the dialog
-  dialog.querySelector(".close").addEventListener("click", () => {
-    dialog.close();
-  });
+function deleteGameClickedNo() {
+  console.log("Close delete dialog");
+  document.querySelector("#dialog-delete-game").close();
 }
 
 async function updateGrid() {
@@ -135,18 +162,17 @@ console.log("hej");
 console.log("hej");
 console.log("hej");
 
-function sortBy(event){
+function sortBy(event) {
   const selectedValue = event.target.value;
 
-  if (selectedValue === "title"){
+  if (selectedValue === "title") {
     games.sort((game1, game2) => game1.title.localeCompare(game2.title));
-  } else if (selectedValue === "rating"){
+  } else if (selectedValue === "rating") {
     games.sort((game1, game2) => game1.rating - game2.rating);
   }
 
   displayGames(games);
 }
-
 
 function updateClicked(gameObject) {
   const updateForm = document.querySelector("#form-update-game");
