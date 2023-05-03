@@ -1,7 +1,6 @@
 "use strict";
 let games;
 const endpoint = "https://igdb-913a7-default-rtdb.europe-west1.firebasedatabase.app/";
-let = games;
 
 window.addEventListener("load", initApp);
 
