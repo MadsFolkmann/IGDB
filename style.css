@@ -78,54 +78,41 @@ main {
 }
 #games {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
   gap: 20px;
 }
 
 /* ---------- grid container styling ---------- */
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1em;
-    padding: 1em;
-}
 
-@media (min-width: 600px) {
-    .grid-container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (min-width: 992px) {
-    .grid-container {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-@media (min-width: 1200px) {
-    .grid-container {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-}
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 1em;
+  padding: 1em;
 }
 
 .grid-item {
-  background-color: #fff;
-  box-shadow: 1 1 8px rgba(0, 0, 0, 0.2);
+  background-color: #948888;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   transition: 0.5s;
   animation: fadeIn 0.5s;
-  padding: 20px;
+  padding: 1.5em;
+  cursor: pointer;
+}
+
+.grid-item:hover {
+    box-shadow: 0 8px 16px 0 black;
 }
 
 .grid-item img {
-  display: block;
+  /* display: block; */
   width: 100%;
-  height: auto;
+  height: 200px;
   margin-bottom: 10px;
+  object-fit: cover;
+    border: 2px solid black;
+  
 }
 
 .grid-info {
@@ -138,13 +125,42 @@ main {
 .grid-info h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .grid-info p {
   font-size: 1.2rem;
 }
 
+.grid-item .btns {
+
+    /* gap: 0.5em; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+}
+
+
+.grid-item button {
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #9C6C56;
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    width: 100%;
+    height: 3em;
+    max-width: 380px;
+}
+button:hover {
+    box-shadow: 0 8px 16px 0 #391707a4;
+}
+
+
+
+/* 
 .btns {
   display: flex;
   justify-content: space-between;
@@ -175,6 +191,10 @@ main {
   background-color: #333;
 } 
 
+.grid-item h2:first-letter,
+.grid-item p:first-letter {
+    text-transform: uppercase;
+} */
 
 /* ---------- animations ---------- */
 /* fade in */
