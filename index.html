@@ -15,37 +15,34 @@
       <button class="header-icons">Sign In</button>
     </header>
 
+    <!------------- The main area with game posts ----------->
 
-<!------------- The main area with game posts ----------->
-
-    <!-- <main>
+    <main>
       <section id="underHeader" class="grid-container">
         <div id="create-btns" class="grid-container">
-          <button class="btns" id="btn-createPost">Create Game</button>
+          <button class="btns" id="btn-create-game">Create Game</button>
         </div>
-        <input type="search" id="input-search" placeholder="Search by title" />
-
-        <label for="sort-posts">Sort by:</label>
-        <select name="sort-posts" id="sort-posts">
+        <label for="sort-games">Sort by:</label>
+        <select name="sort-games" id="sort-games">
           <option value="">Not selected</option>
           <option value="title">Title</option>
-          <option value="body">Body</option>
+          <option value="rating">Rating</option>
         </select>
       </section>
       <section id="games" class="grid-container">
-                <article class="grid-item">
-            <img src="${postObject.image}">
-            <div class="grid-info">
-            <h2>${postObject.title}</h2>
-            <p>${postObject.rating}</p>
-            </div>
-            <div class="btns">
-            <button class = "btn-update">update</button>
-            <button class = "btn-delete">Delete</button>
-            </div>
+        <article class="grid-item">
+          <img src="pictures/SHAQ+&+VERNE.jpg" alt="" />
+          <div class="grid-info">
+            <h2>Game Title</h2>
+            <p>8.5</p>
+          </div>
+          <div class="btns">
+            <button class="btn-update">Update</button>
+            <button class="btn-delete">Delete</button>
+          </div>
         </article>
       </section>
-    </main> -->
+    </main>
 
     <script src="scripts.js"></script>
   </body>
