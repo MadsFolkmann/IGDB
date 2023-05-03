@@ -8,8 +8,8 @@ async function initApp() {
   console.log("VELKOMMEN TIL IGDB");
   updateGrid();
 
-  document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
-  document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked);
+  document.querySelector("#btn-create-game").addEventListener("click", showCreateModal);
+  document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked); 
   document.querySelector("#form-delete-game").addEventListener("click", deleteGameClickedNo);
   //Update//
   document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
@@ -19,7 +19,7 @@ async function initApp() {
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 }
 
-// ---------------------filter games-----------------------//
+// ---------------------filter and Sort games-----------------------//
 
 function inputSearchChanged(event) {
   const value = event.target.value;
@@ -40,17 +40,31 @@ function searchGames(searchValue) {
   return results;
 }
 
-// ---------------------Create User/Posts-----------------------//
+function sortBy(event) {
+  const selectedValue = event.target.value;
 
-// game
-function showGameModal() {
-  const dialog = document.querySelector("#dialog-create-game");
+  if (selectedValue === "title") {
+    games.sort((game1, game2) => game1.title.localeCompare(game2.title));
+  } else if (selectedValue === "rating") {
+    games.sort((game1, game2) => game2.rating - game1.rating);
+  }
 
-  dialog.showModal();
+  displayGames(games);
+}
 
-  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+// ---------------------Create game-----------------------//
 
-  // closes dialog when clicking outside the dialog
+function showCreateModal() {
+    const dialog = document.querySelector("#dialog-create-game");
+
+        dialog.showModal();
+
+        document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+
+
+    dialog.querySelector(".close").addEventListener("click", () => {
+          dialog.close();
+    });
 }
 
 function createGameClicked(event) {
@@ -85,54 +99,40 @@ async function createPost(title, image, rating) {
   }
 }
 
-function showGameModal() {
-  const dialog = document.querySelector("#dialog-create-game");
+//----------------Update Grid---------------//
 
-  dialog.showModal();
+    async function updateGrid() {
+        games = await getGames();
+        displayGames(games);
+    }
 
-function deleteGameClicked(event) {
-  console.log(event);
-  const id = event.target.getAttribute("data-id");
-  deleteGame(id);
-  document.querySelector("#dialog-delete-game").close();
-}
+    //----------------------Games-----------------------//
+    async function getGames() {
+        const response = await fetch(`${endpoint}/games.json`); // fetch request, (GET)
+        const data = await response.json(); // parse JSON to JavaScript
+        const games = prepareGameData(data);
+        return games;
+    }
 
-function deleteGameClickedNo() {
-  console.log("Close delete dialog");
-  document.querySelector("#dialog-delete-game").close();
-}
+    async function prepareGameData(dataObject) {
+        const gameArray = [];
+        for (const key in dataObject) {
+            const games = dataObject[key];
+            games.id = key;
+            gameArray.push(games);
+        }
+        return gameArray;
+    }
 
-async function updateGrid() {
-  games = await getGames();
-  displayGames(games);
-}
+    function displayGames(listOfGames) {
+        document.querySelector("#games").innerHTML = "";
+        for (const game of listOfGames) {
+            showGames(game);
+        }
+    }
 
-async function getGames() {
-  const response = await fetch(`${endpoint}/games.json`); // fetch request, (GET)
-  const data = await response.json(); // parse JSON to JavaScript
-  const games = prepareGameData(data);
-  return games;
-}
-
-async function prepareGameData(dataObject) {
-  const gameArray = [];
-  for (const key in dataObject) {
-    const games = dataObject[key];
-    games.id = key;
-    gameArray.push(games);
-  }
-  return gameArray;
-}
-
-function displayGames(listOfGames) {
-  document.querySelector("#games").innerHTML = "";
-  for (const game of listOfGames) {
-    showGames(game);
-  }
-}
-
-function showGames(gameObject) {
-  const html = /*html*/ `
+    function showGames(gameObject) {
+        const html = /*html*/ `
     <article class="grid-item">
       <img src= "${gameObject.image}"/>
       <div class="grid-info">
@@ -146,92 +146,95 @@ function showGames(gameObject) {
     </article>
   `;
 
-  document.querySelector("#games").insertAdjacentHTML("beforeend", html);
-  document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
-  document.querySelector("#games article:last-child .btn-delete").addEventListener("click", deleteClicked);
+        document.querySelector("#games").insertAdjacentHTML("beforeend", html);
+        document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
+        document.querySelector("#games article:last-child .btn-delete").addEventListener("click", () => deleteClicked(gameObject));
 
-  function deleteClicked() {
-    console.log("Delete button clicked");
-    document.querySelector("#title-of-the-game").textContent = gameObject.title;
-    document.querySelector("#form-delete-game").setAttribute("data-id", gameObject.id);
-    document.querySelector("#dialog-delete-game").showModal();
-  }
-}
 
-console.log("hej");
-console.log("hej");
-console.log("hej");
+    }
 
-function sortBy(event) {
-  const selectedValue = event.target.value;
+    //-------------------Update and Delete----------------------//
 
-  if (selectedValue === "title") {
-    games.sort((game1, game2) => game1.title.localeCompare(game2.title));
-  } else if (selectedValue === "rating") {
-    games.sort((game1, game2) => game1.rating - game2.rating);
-  }
+    //update
+    function updateClicked(gameObject) {
+        const updateForm = document.querySelector("#form-update-game");
+        const dialog = document.querySelector("#dialog-update-game");
 
-  displayGames(games);
-}
+        updateForm.title.value = gameObject.title;
+        updateForm.image.value = gameObject.image;
+        updateForm.resume.value = gameObject.resume;
+        updateForm.genre.value = gameObject.genre;
+        updateForm.rating.value = gameObject.rating;
+        document.querySelector("#form-update-game").setAttribute("data-id", gameObject.id);
+        dialog.showModal();
 
-function updateClicked(gameObject) {
-  const updateForm = document.querySelector("#form-update-game");
+        //Closes dialog on x click
+        dialog.querySelector(".close").addEventListener("click", () => {
+        dialog.close();
+        });
+    }
 
-  updateForm.title.value = gameObject.title;
-  updateForm.image.value = gameObject.image;
-  updateForm.resume.value = gameObject.resume;
-  updateForm.genre.value = gameObject.genre;
-  updateForm.rating.value = gameObject.rating;
-  document.querySelector("#form-update-game").setAttribute("data-id", gameObject.id);
-  document.querySelector("#dialog-update-game").showModal();
-}
+    function updateGameClicked(event) {
+        event.preventDefault();
+        const form = event.target;
+        const id = event.target.getAttribute("data-id");
 
-function updateGameClicked(event) {
-  event.preventDefault();
-  const form = event.target;
-  const id = event.target.getAttribute("data-id");
+        const title = form.title.value;
+        const rating = form.rating.value;
+        const image = form.image.value;
+        const genre = form.genre.value
+        const resume = form.resume.value
 
-  const title = form.title.value;
-  const rating = form.rating.value;
-  const image = form.image.value;
+        updateGame(id, title, rating, image, genre, resume);
+        document.querySelector("#dialog-update-game").close();
+    }
 
-  updateGame(id, title, rating, image);
-  document.querySelector("#dialog-update-game").close();
-}
+    async function updateGame(id, title, rating, image, genre, resume) {
+        const updatedGame = {
+            title: title,
+            rating: rating,
+            image: image,
+            genre: genre,
+            resume: resume
+        };
 
-async function updateGame(id, title, rating, image) {
-  const updatedGame = {
-    title: title,
-    rating: rating,
-    image: image,
-  };
+        const json = JSON.stringify(updatedGame);
+        const response = await fetch(`${endpoint}/games/${id}.json`, { method: "PUT", body: json });
+  
+        if (response.ok) {
+            console.log("Game succesfully updated in firbase🐱🐱");
+            updateGrid();
+        }
+    }
+    
+    //delete
+    function deleteClicked(gameObject) {
+        console.log("Delete button clicked");
+        document.querySelector("#title-of-the-game").textContent = gameObject.title;
+        document.querySelector("#form-delete-game").setAttribute("data-id", gameObject.id);
+        document.querySelector("#dialog-delete-game").showModal();
+        
+    }
+    
+    function deleteGameClicked(event) {
+        console.log(event);
+        const id = event.target.getAttribute("data-id");
+        deleteGame(id);
+        document.querySelector("#dialog-delete-game").close();
+    }
 
-  const json = JSON.stringify(updatedGame);
-  const response = await fetch(`${endpoint}/games/${id}.json`, { method: "PUT", body: json });
+    function deleteGameClickedNo() {
+        console.log("Close delete dialog");
+        document.querySelector("#dialog-delete-game").close();
+    }
+    
 
-  if (response.ok) {
-    console.log("Game succesfully updated in firbase🐱🐱");
-    updateGrid();
-  }
-}
+    //-------Refresh ved click af IGDB-------//
+    const igdbImg = document.querySelector("#igdb-img");
 
-//-------Refresh ved click af IGDB-------//
-const igdbImg = document.querySelector("#igdb-img");
+    igdbImg.addEventListener("click", () => {
+        location.reload();
+    });
 
-igdbImg.addEventListener("click", () => {
-  location.reload();
-});
 
-//-------Kryds i dialogen-------//
-function showGameModal() {
-  const dialog = document.querySelector("#dialog-create-game");
 
-  dialog.showModal();
-
-  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
-
-  // closes dialog when clicking outside the dialog
-  dialog.querySelector(".close").addEventListener("click", () => {
-    dialog.close();
-  });
-}
