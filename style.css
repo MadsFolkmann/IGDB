@@ -181,17 +181,40 @@ button:hover {
   }
 }
 
+
+#btn-create-game {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#btn-create-game:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}  
+
 #dialog-create-game {
   width: 500px;
   padding: 20px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-#dialog-create-game h2 {
-  margin-top: 0;
-  font-size: 24px;
+#dialog-create-game h1 {
+  font-size: 30px;
+  margin: 0 0 20px;
+  text-align: center;
 }
 
 #dialog-create-game label {
@@ -200,8 +223,10 @@ button:hover {
   font-size: 16px;
 }
 
+#dialog-create-game input[type="url"],
 #dialog-create-game input[type="text"],
-#dialog-create-game input[type="number"] {
+#dialog-create-game input[type="number"],
+#dialog-create-game textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -211,41 +236,84 @@ button:hover {
   margin-bottom: 20px;
 }
 
-#dialog-create-game button {
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+#dialog-create-game input[type="submit"] {
+  background-color: #f3ce13;
+  color: #fff;
   padding: 10px 20px;
   border: none;
-  border-radius: 1px;
-  font-size: 30px;
+  border-radius: 3px;
+  font-size: 16px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-#dialog-create-game button:hover {
-  background-color: #fcfcfa;
+#dialog-create-game input[type="submit"]:hover {
+  background-color: #e0b400;
 }
 
-#dialog-create-game ::-webkit-input-placeholder {
-  color: #ccc;
+#dialog-create-game button.close {
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
-#dialog-create-game :-moz-placeholder {
-  color: #ccc;
+#dialog-create-game button.close:hover {
+  color: #333;
 }
 
-#dialog-create-game ::-moz-placeholder {
-  color: #ccc;
+#dialog-update-game {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-#dialog-create-game :-ms-input-placeholder {
-  color: #ccc;
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-#btn-create-game {
-  width: 90px;
-  height: 60px;
+.dialog-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.dialog-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
   background-color: #f3ce13;
-  color: rgb(0, 0, 0);
+  color: #000;
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
@@ -253,16 +321,61 @@ button:hover {
   cursor: pointer;
 }
 
+input[type="submit"]:hover {
+  background-color: #f7d450;
+}
+
 button.close {
-  position: absolute;
-  top: 5px;
-  right: -15px;
-  background-color: #912d26;
-  color: #000000;
-  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #000;
   cursor: pointer;
 }
 
 button.close:hover {
-  background-color: #d32f2f;
+  color: #f3ce13;
+}
+
+
+#sort-games {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#sort-games option {
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+
+#sign-in {
+  display: inline-block;
+  padding: 6px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
