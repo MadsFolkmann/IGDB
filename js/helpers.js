@@ -1,25 +1,20 @@
-export { sortBy, inputSearchChanged };
+const endpoint = "https://igdb-913a7-default-rtdb.europe-west1.firebasedatabase.app/";
+
+export { endpoint, sortBy, inputSearchChanged, searchGames };
 
 // ---------------------filter and Sort games-----------------------//
 
 function inputSearchChanged(event) {
   const value = event.target.value;
-  const postsToShow = searchGames(value);
-  displayGames(postsToShow);
+  const gamesToShow = searchGames(value);
+  displayGames(gamesToShow);
 }
 
-function searchGames(searchValue) {
+const searchGames = (searchValue) => {
   searchValue = searchValue.toLowerCase();
 
-  const results = games.filter(checkTitle);
-
-  function checkTitle(game) {
-    const title = game.title.toLowerCase();
-    return title.includes(searchValue);
-  }
-
-  return results;
-}
+  return games.filter((game) => game.title.toLowerCase().includes(searchValue));
+};
 
 function sortBy(event) {
   const selectedValue = event.target.value;

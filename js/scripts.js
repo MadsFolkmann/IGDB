@@ -1,13 +1,13 @@
 "use strict";
 
 import { endpoint, getGames, prepareGameData, createPost, updateGame, deleteGame } from "./rest-service.js";
-import { sortBy, inputSearchChanged } from "./helpers.js";
+// import { sortBy, inputSearchChanged, searchGames } from "./helpers.js";
 
 let games;
 endpoint;
 window.addEventListener("load", initApp);
 
-async function initApp() {
+function initApp() {
   console.log("VELKOMMEN TIL IGDB");
   updateGrid();
 
@@ -24,10 +24,27 @@ async function initApp() {
 
 // ---------------------filter and Sort games-----------------------//
 
-inputSearchChanged();
+function inputSearchChanged(event) {
+  const value = event.target.value;
+  const gamesToShow = searchGames(value);
+  displayGames(gamesToShow);
+}
+function sortBy(event) {
+  const selectedValue = event.target.value;
 
-sortBy();
+  if (selectedValue === "title") {
+    games.sort((game1, game2) => game1.title.localeCompare(game2.title));
+  } else if (selectedValue === "rating") {
+    games.sort((game1, game2) => game2.rating - game1.rating);
+  }
 
+  displayGames(games);
+}
+const searchGames = (searchValue) => {
+  searchValue = searchValue.toLowerCase();
+
+  return games.filter((game) => game.title.toLowerCase().includes(searchValue));
+};
 // ---------------------Create game-----------------------//
 
 function showCreateModal() {
@@ -59,7 +76,7 @@ async function createGameClicked(event) {
   }
   document.querySelector("#dialog-create-game").close();
 }
-createPost(title, image, rating);
+createPost();
 
 //----------------Update Grid---------------//
 
@@ -140,11 +157,11 @@ async function updateGameClicked(event) {
   document.querySelector("#dialog-update-game").close();
 }
 
-updateGame(id, title, rating, image, genre, resume);
+updateGame();
 
 //delete
 
-deleteGame(id);
+deleteGame();
 
 function deleteClicked(gameObject) {
   console.log("Delete button clicked");
