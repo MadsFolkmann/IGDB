@@ -55,3 +55,9 @@ function showGames(gameObject) {
 console.log("hej");
 console.log("hej");
 console.log("hej");
+
+const igdbImg = document.querySelector("#igdb-img");
+
+igdbImg.addEventListener("click", () => {
+  location.reload();
+});
