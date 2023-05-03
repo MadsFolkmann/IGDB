@@ -158,6 +158,8 @@ main {
   max-width: 380px;
 margin-left: 20px;
   margin-right: 20px;
+ border-radius: 50px;
+
 }
 button:hover {
   box-shadow: 0 8px 16px 0 #391707a4;
