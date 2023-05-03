@@ -5,16 +5,17 @@ const endpoint = "https://igdb-913a7-default-rtdb.europe-west1.firebasedatabase.
 window.addEventListener("load", initApp);
 
 async function initApp() {
-    console.log("VELKOMMEN TIL IGDB");
-    updateGrid()
-    
-      document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
-}
+  console.log("VELKOMMEN TIL IGDB");
+  updateGrid();
 
+  document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
+  document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked);
+  document.querySelector("#form-delete-game").addEventListener("click", deletePostClickedNo);
+}
 
 // ---------------------Create User/Posts-----------------------//
 
-// Post
+// game
 function showGameModal() {
   const dialog = document.querySelector("#dialog-create-game");
 
@@ -23,8 +24,6 @@ function showGameModal() {
   document.querySelector("#createGame").addEventListener("submit", createGameClicked);
 
   // closes dialog when clicking outside the dialog
-
-
 }
 
 function createGameClicked(event) {
@@ -59,11 +58,32 @@ async function createPost(title, image, rating) {
   }
 }
 
-async function updateGrid() {
-games = await getGames();
-  displayGames(games);
+// ============== Delete Posts ============== //
+
+async function deleteGame(id) {
+  const response = await fetch(`${endpoint}games/${id}.json`, { method: "DELETE" });
+  if (response.ok) {
+    console.log("Game has succesfully been deleted from the database!");
+    updateGrid();
+  }
 }
 
+function deleteGameClicked(event) {
+  console.log(event);
+  const id = event.target.getAttribute("data-id");
+  deleteGame(id);
+  document.querySelector("dialog-delete-game").close();
+}
+
+function deletePostClickedNo() {
+  console.log("Close delete dialog");
+  document.querySelector("#dialog-delete-game").close();
+}
+
+async function updateGrid() {
+  games = await getGames();
+  displayGames(games);
+}
 
 async function getGames() {
   const response = await fetch(`${endpoint}/games.json`); // fetch request, (GET)
@@ -72,10 +92,10 @@ async function getGames() {
   return games;
 }
 
-async function updateGamesGrid() {
-  games = await getGames(); // get posts from rest endpoint and save in variable
-  showGames(games); // show all posts (append to the DOM) with posts as argument
-}
+// async function updateGamesGrid() {
+//   games = await getGames(); // get posts from rest endpoint and save in variable
+//   showGames(games); // show all posts (append to the DOM) with posts as argument
+// }
 
 async function prepareGameData(dataObject) {
   const gameArray = [];
@@ -110,6 +130,14 @@ function showGames(gameObject) {
   `;
 
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
+  document.querySelector("#games article:last-child .btn-delete").addEventListener("click", deleteClicked);
+
+  function deleteClicked() {
+    console.log("Delete button clicked");
+    document.querySelector("#title-of-the-game").textContent = gameObject.title;
+    document.querySelector("#form-delete-game").setAttribute("data-id", gameObject.id);
+    document.querySelector("#dialog-delete-game").showModal();
+  }
 }
 
 console.log("hej");
