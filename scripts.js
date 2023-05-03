@@ -13,6 +13,8 @@ async function initApp() {
   document.querySelector("#form-delete-game").addEventListener("click", deletePostClickedNo);
   //Update//
   document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
+     document.querySelector("#sort-games").addEventListener("change", sortBy);
+
 }
 
 // ---------------------Create User/Posts-----------------------//
@@ -128,6 +130,23 @@ function showGames(gameObject) {
     document.querySelector("#dialog-delete-game").showModal();
   }
 }
+
+console.log("hej");
+console.log("hej");
+console.log("hej");
+
+function sortBy(event){
+  const selectedValue = event.target.value;
+
+  if (selectedValue === "title"){
+    games.sort((game1, game2) => game1.title.localeCompare(game2.title));
+  } else if (selectedValue === "rating"){
+    games.sort((game1, game2) => game1.rating - game2.rating);
+  }
+
+  displayGames(games);
+}
+
 
 function updateClicked(gameObject) {
   const updateForm = document.querySelector("#form-update-game");
