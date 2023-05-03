@@ -137,7 +137,7 @@ async function createPost(title, image, rating) {
       <img src= "${gameObject.image}"/>
       <div class="grid-info">
         <h2>${gameObject.title}</h2>
-        <p>${gameObject.rating}</p>
+        <p>${gameObject.rating}⭐</p>
       </div>
       <div class="btns">
         <button class="btn-update">Update</button>

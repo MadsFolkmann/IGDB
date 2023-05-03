@@ -67,6 +67,8 @@ main {
 }
 #underHeader label {
   margin-right: 20px;
+  display: flex;
+  align-items: center;
 }
 
 #sort-games {
@@ -76,9 +78,13 @@ main {
   background-color: #fff;
   color: #111;
 }
+#underHeader label, #sort-games {
+  display: inline-flex;
+  align-items: center;
+}
+
 #games {
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
   gap: 40px;
 }
 
