@@ -18,8 +18,8 @@
     <!------------- The main area with game posts ----------->
 
     <main>
-      <section id="underHeader" >
-        <div id="create-btns" >
+      <section id="underHeader">
+        <div id="create-btns">
           <button class="btns" id="btn-create-game">Create Game</button>
         </div>
         <label for="sort-games">Sort by:</label>
@@ -29,33 +29,58 @@
           <option value="rating">Rating</option>
         </select>
       </section>
-      <section id="games" class="grid-container">
-      </section>
+      <section id="games" class="grid-container"></section>
     </main>
 
-    
     <dialog id="dialog-create-game" class="dialog-game">
       <h1>Create game</h1>
 
       <form action="" method="post" id="createGame">
         <label for="image">Image:</label>
-        <input type="url" id="image" name="image" placeholder="Paste an image URL" required/><br /><br />
+        <input type="url" id="image" name="image" placeholder="Paste an image URL" required /><br /><br />
 
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Type a new title" required/><br /><br />
+        <input type="text" id="title" name="title" placeholder="Type a new title" required /><br /><br />
 
         <label for="resume">Resume:</label><br />
-        <textarea id="body" name="resume" rows="5" cols="50" maxlength="100" placeholder="Type the content of your new post" required></textarea><br /><br />
+        <textarea id="resume" name="resume" rows="5" cols="50" maxlength="100" placeholder="Type the content of your new post" required></textarea
+        ><br /><br />
 
-          <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" placeholder="Type a new genre" required/><br /><br />
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" placeholder="Type a new genre" required /><br /><br />
 
-          <label for="rating">Rating:</label>
-        <input type="number" id="rating" name="rating" placeholder="Type a rating" required/><br /><br />
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" placeholder="Type a rating" required /><br /><br />
 
-        <input type="submit" value="Post"/>
+        <input type="submit" value="Post" />
       </form>
-     </dialog>
+    </dialog>
+
+    <!---------------- Dialog update post --------------->
+
+        <dialog id="dialog-update-game" class="dialog-game">
+      <h1>Update game</h1>
+
+      <form id="form-update-game">
+        <label for="image">Image:</label>
+        <input type="url" id="update-image" name="image" placeholder="Paste an image URL" required /><br /><br />
+
+        <label for="title">Title:</label>
+        <input type="text" id="update-title" name="title" placeholder="Type a new title" required /><br /><br />
+
+        <label for="resume">Resume:</label><br />
+        <textarea id="resume" name="update-resume" rows="5" cols="50" maxlength="100" placeholder="Type the content of your new post" required></textarea
+        ><br /><br />
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="update-genre" name="genre" placeholder="Type a new genre" required /><br /><br />
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="update-rating" name="rating" placeholder="Type a rating" required /><br /><br />
+
+        <input type="submit" value="Update" />
+      </form>
+    </dialog>
 
     <script src="scripts.js"></script>
   </body>
