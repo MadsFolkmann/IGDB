@@ -51,3 +51,5 @@ function showGames(gameObject) {
 
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
 }
+
+console.log("hej");
