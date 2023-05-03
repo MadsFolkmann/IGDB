@@ -80,31 +80,6 @@ main {
   gap: 40px;
 }
 
-/* ---------- grid container styling ---------- */
-/* .grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1em;
-    padding: 1em;
-}
-
-@media (min-width: 600px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-@media (min-width: 1200px) {
-    .grid-container {
-        grid-template-columns: repeat(5, 1fr);
-    }
-} */
-
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -175,7 +150,7 @@ button:hover {
   box-shadow: 0 8px 16px 0 #391707a4;
 }
 
-.btns button:hover{
+.btns button:hover {
   background-color: yellow;
   color: black;
   cursor: pointer;
@@ -227,4 +202,90 @@ button:hover {
   to {
     opacity: 1;
   }
+}
+
+#dialog-create-game {
+  width: 500px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dialog-create-game h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+#dialog-create-game label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dialog-create-game input[type="text"],
+#dialog-create-game input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+#dialog-create-game button {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 1px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#dialog-create-game button:hover {
+  background-color: #fcfcfa;
+}
+
+#dialog-create-game ::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+#dialog-create-game :-moz-placeholder {
+  color: #ccc;
+}
+
+#dialog-create-game ::-moz-placeholder {
+  color: #ccc;
+}
+
+#dialog-create-game :-ms-input-placeholder {
+  color: #ccc;
+}
+
+#btn-create-game {
+  width: 90px;
+  height: 60px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.close {
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  background-color: #912d26;
+  color: #000000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button.close:hover {
+  background-color: #d32f2f;
 }

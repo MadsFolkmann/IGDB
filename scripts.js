@@ -59,6 +59,20 @@ async function createPost(title, image, rating) {
   }
 }
 
+
+function showGameModal() {
+  const dialog = document.querySelector("#dialog-create-game");
+
+  dialog.showModal();
+
+  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+
+  // closes dialog when clicking outside the dialog
+  dialog.querySelector(".close").addEventListener("click", () => {
+    dialog.close();
+  });
+}
+
 async function updateGrid() {
 games = await getGames();
   displayGames(games);
