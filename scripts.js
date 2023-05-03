@@ -1,14 +1,69 @@
 "use strict";
-
+let games;
 const endpoint = "https://igdb-913a7-default-rtdb.europe-west1.firebasedatabase.app/";
 
 window.addEventListener("load", initApp);
 
 async function initApp() {
-  console.log("VELKOMMEN TIL IGDB");
-  games = await getGames();
+    console.log("VELKOMMEN TIL IGDB");
+    updateGrid()
+    
+      document.querySelector("#btn-create-game").addEventListener("click", showGameModal);
+}
+
+
+// ---------------------Create User/Posts-----------------------//
+
+// Post
+function showGameModal() {
+  const dialog = document.querySelector("#dialog-create-game");
+
+  dialog.showModal();
+
+  document.querySelector("#createGame").addEventListener("submit", createGameClicked);
+
+  // closes dialog when clicking outside the dialog
+
+
+}
+
+function createGameClicked(event) {
+  event.preventDefault();
+
+  const form = event.target;
+
+  const title = form.title.value;
+  const rating = form.rating.value;
+  const image = form.image.value;
+
+  createPost(title, image, rating);
+
+  form.reset();
+
+  document.querySelector("#dialog-create-game").close();
+}
+
+async function createPost(title, image, rating) {
+  const newPost = {
+    title: title,
+    image: image,
+    rating: rating,
+  };
+  const postAsJson = JSON.stringify(newPost);
+
+  const response = await fetch(`${endpoint}/games.json`, { method: "POST", body: postAsJson });
+
+  if (response.ok) {
+    console.log("Post succesful in firebase(❁´◡`❁)");
+    updateGrid();
+  }
+}
+
+async function updateGrid() {
+games = await getGames();
   displayGames(games);
 }
+
 
 async function getGames() {
   const response = await fetch(`${endpoint}/games.json`);
@@ -47,7 +102,7 @@ function showGames(gameObject) {
         <button class="btn-delete">Delete</button>
       </div>
     </article>
-  ;`;
+  `;
 
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
 }
