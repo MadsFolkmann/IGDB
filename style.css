@@ -14,7 +14,7 @@ header {
 
 /* Style for the IGDB logo image and sign in button */
 #igdb-img,
-button {
+#sign-in {
   width: 60px;
   height: 60px;
 }
@@ -26,11 +26,13 @@ button {
 
 #igdb-img {
   margin-right: 20px;
+  cursor: pointer;
 }
 
-button {
+#sign-in {
   margin-left: 20px;
   margin-right: 20px;
+  background-color: #f3ce13;
 }
 
 /* Style for the search input */
@@ -65,6 +67,8 @@ main {
 }
 #underHeader label {
   margin-right: 20px;
+  display: flex;
+  align-items: center;
 }
 
 #sort-games {
@@ -74,44 +78,26 @@ main {
   background-color: #fff;
   color: #111;
 }
+#underHeader label, #sort-games {
+  display: inline-flex;
+  align-items: center;
+}
+
 #games {
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
   gap: 40px;
 }
 
-/* ---------- grid container styling ---------- */
-/* .grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1em;
-    padding: 1em;
-}
-
-@media (min-width: 600px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 992px) {
-    .grid-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-@media (min-width: 1200px) {
-    .grid-container {
-        grid-template-columns: repeat(5, 1fr);
-    }
-} */
-
+/*----------------- Grid container styling -----------------*/
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 273px));
   gap: 1.5em;
   padding: 0.6em;
 }
 
+
+/*----------------- Grid item styling -----------------*/
 .grid-item {
   background-color: #292626;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
@@ -170,52 +156,20 @@ main {
   width: 100%;
   height: 3em;
   max-width: 380px;
+margin-left: 20px;
+  margin-right: 20px;
+ border-radius: 50px;
+
 }
 button:hover {
   box-shadow: 0 8px 16px 0 #391707a4;
 }
 
-.btns button:hover{
+.btns button:hover {
   background-color: yellow;
   color: black;
   cursor: pointer;
 }
-
-/* 
-.btns {
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn-update,
-.btn-delete {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-update {
-  background-color: #4CAF50;
-}
-
-.btn-delete {
-  background-color: #f44336;
-  margin-left: 10px;
-}
-
-.btn-update:hover,
-.btn-delete:hover {
-  background-color: #333;
-} 
-
-.grid-item h2:first-letter,
-.grid-item p:first-letter {
-    text-transform: uppercase;
-} */
 
 /* ---------- animations ---------- */
 /* fade in */
@@ -227,4 +181,214 @@ button:hover {
   to {
     opacity: 1;
   }
+}
+
+
+#btn-create-game {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#btn-create-game:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}  
+
+#dialog-create-game {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dialog-create-game h1 {
+  font-size: 30px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+#dialog-create-game label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dialog-create-game input[type="url"],
+#dialog-create-game input[type="text"],
+#dialog-create-game input[type="number"],
+#dialog-create-game textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+#dialog-create-game input[type="submit"] {
+  background-color: #f3ce13;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#dialog-create-game input[type="submit"]:hover {
+  background-color: #e0b400;
+}
+
+#dialog-create-game button.close {
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#dialog-create-game button.close:hover {
+  color: #333;
+}
+
+#dialog-update-game {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dialog-update-game button.close {
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dialog-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.dialog-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  background-color: #f3ce13;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #f7d450;
+}
+
+button.close {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+}
+
+button.close:hover {
+  color: #f3ce13;
+}
+
+
+#sort-games {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#sort-games option {
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+
+#sign-in {
+  display: inline-block;
+  padding: 6px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
