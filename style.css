@@ -72,13 +72,58 @@ main {
 }
 
 #sort-games {
-  padding: 5px;
-  border-radius: 5px;
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
   border: none;
-  background-color: #fff;
-  color: #111;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
-#underHeader label, #sort-games {
+
+#sort-games option {
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+#filter-games {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#filter-games option {
+  color: #070707;
+  background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+#underHeader label, #sort-games, #filter-games {
   display: inline-flex;
   align-items: center;
 }
@@ -348,32 +393,6 @@ button.close {
 
 button.close:hover {
   color: #f3ce13;
-}
-
-
-#sort-games {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #070707;
-  background-color: #f3ce13;
-  border: none;
-  border-radius: 50px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-#sort-games option {
-  color: #070707;
-  background-color: #f3ce13;
-  border: none;
-  border-radius: 50px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
 }
 
 

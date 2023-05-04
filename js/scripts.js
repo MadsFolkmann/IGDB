@@ -20,15 +20,41 @@ function initApp() {
 
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+
+  document.querySelector("#filter-games").addEventListener("change", filterGamesChanged)
 }
 
 // ---------------------filter and Sort games-----------------------//
+
+
+function filterGamesChanged(event) {
+  const value = event.target.value;
+  console.log(value)
+  const gamesToShow = filterGames(value)
+  console.log(gamesToShow)
+  displayGames(gamesToShow)
+}
+
+
+ function filterGames(filterSelected) {
+   console.log(filterSelected)
+   console.log(games)
+   return games.filter((game) => game.genre.includes(filterSelected))
+   
+  }
 
 function inputSearchChanged(event) {
   const value = event.target.value;
   const gamesToShow = searchGames(value);
   displayGames(gamesToShow);
 }
+
+const searchGames = (searchValue) => {
+  searchValue = searchValue.toLowerCase();
+
+  return games.filter((game) => game.title.toLowerCase().includes(searchValue));
+};
+
 function sortBy(event) {
   const selectedValue = event.target.value;
 
@@ -40,11 +66,6 @@ function sortBy(event) {
 
   displayGames(games);
 }
-const searchGames = (searchValue) => {
-  searchValue = searchValue.toLowerCase();
-
-  return games.filter((game) => game.title.toLowerCase().includes(searchValue));
-};
 // ---------------------Create game-----------------------//
 
 function showCreateModal() {
@@ -185,6 +206,8 @@ function deleteGameClickedNo() {
   console.log("Close delete dialog");
   document.querySelector("#dialog-delete-game").close();
 }
+
+
 
 //-------Refresh ved click af IGDB-------//
 const igdbImg = document.querySelector("#igdb-img");

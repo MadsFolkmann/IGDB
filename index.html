@@ -29,6 +29,21 @@
             <option value="title">Title</option>
             <option value="rating">Rating</option>
           </select>
+          <label for="filter-games">Filter:</label>
+           <select name="filter-games" id="filter-games">
+            <option value="">Non selected</option>
+            <option value="adventure">adventure</option>
+            <option value="strategy">strategy</option>
+            <option value="sport">sport</option>
+            <option value="fighting">fighting</option>
+            <option value="rpg">rpg</option>
+            <option value="sandbox">sandbox</option>
+            <option value="shooting">shooting</option>
+            <option value="survival-horror">survival Horror</option>
+            <option value="racing">racing</option>
+            <option value="simulation">simulation</option>
+            <option value="puzzle">puzzle</option>
+          </select required> <br /><br /> 
         </div>
       </section>
       <section id="games" class="grid-container"></section>
@@ -46,14 +61,26 @@
         <input type="text" id="title" name="title" placeholder="Type a new title" required /><br /><br />
 
         <label for="resume">Resume:</label><br />
-        <textarea id="resume" name="resume" rows="5" cols="50" maxlength="100" placeholder="Type the content of your new post" required></textarea
+        <textarea id="resume" name="resume" rows="5" cols="50" maxlength="200" placeholder="Type the content of your new post" required></textarea
         ><br /><br />
 
         <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" placeholder="Type a new genre" required /><br /><br />
+        <select name="genre" id="genre">
+            <option value="adventure">adventure</option>
+            <option value="strategy">strategy</option>
+            <option value="sport">sport</option>
+            <option value="fighting">fighting</option>
+            <option value="rpg">rpg</option>
+            <option value="sandbox">sandbox</option>
+            <option value="shooting">shooting</option>
+            <option value="survival-horror">survival Horror</option>
+            <option value="racing">racing</option>
+            <option value="simulation">simulation</option>
+            <option value="puzzle">puzzle</option>
+        </select required> <br /><br />
 
         <label for="rating">Rating:</label>
-        <input type="number" id="rating" name="rating" placeholder="Type a rating" required /><br /><br />
+        <input type="number" id="rating" name="rating" placeholder="Type a rating" min="1" max="10" required /><br /><br />
 
         <input type="submit" value="Add new game" />
       </form>
@@ -73,24 +100,26 @@
         <input type="text" id="update-title" name="title" placeholder="Type a new title" required /><br /><br />
 
         <label for="resume">Resume:</label><br />
-        <textarea
-          id="resume"
-          name="update-resume"
-          rows="5"
-          cols="50"
-          maxlength="100"
-          placeholder="Type the content of your new post"
-          required
-        ></textarea
-        ><br /><br />
-
+        <textarea id="resume" name="update-resume" rows="5" cols="50" maxlength="200" placeholder="Type the content of your new post" required></textarea> 
+        <br /><br />
         <label for="genre">Genre:</label>
-        <input type="text" id="update-genre" name="genre" placeholder="Type a new genre" required /><br /><br />
+               <select name="genre" id="update-genre">
+            <option value="adventure">adventure</option>
+            <option value="strategy">strategy</option>
+            <option value="sport">sport</option>
+            <option value="fighting">fighting</option>
+            <option value="rpg">rpg</option>
+            <option value="sandbox">sandbox</option>
+            <option value="shooting">shooting</option>
+            <option value="survival-horror">survival Horror</option>
+            <option value="racing">racing</option>
+            <option value="simulation">simulation</option>
+            <option value="puzzle">puzzle</option>
+        </select required> <br /><br />
 
         <label for="rating">Rating:</label>
-        <input type="number" id="update-rating" name="rating" placeholder="Type a rating" required /><br /><br />
+        <input type="number" id="update-rating" name="rating" placeholder="Type a rating" min="1" max="10" required /><br /><br />
         
-
         <input type="submit" value="Update" />
       </form>
       <button class="close" type="button">X</button>

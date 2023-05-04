@@ -27,3 +27,14 @@ function sortBy(event) {
 
   displayGames(games);
 }
+
+
+//  function filterGames(event) {
+//    const filterSelect = event.target;
+//    if (filterSelect.value !== "none") {
+//      horseArr = horseArr.filter((horse) => horse["gender"] === filterSelect.value);
+//      showHorses(horseArr);
+//    } else {
+//    }
+//  }
+
