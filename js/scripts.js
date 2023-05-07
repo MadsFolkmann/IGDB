@@ -11,12 +11,17 @@ function initApp() {
   console.log("VELKOMMEN TIL IGDB");
   updateGrid();
 
+  //Create//
   document.querySelector("#btn-create-game").addEventListener("click", showCreateModal);
+
+  //Delete//
   document.querySelector("#form-delete-game").addEventListener("submit", deleteGameClicked);
   document.querySelector("#form-delete-game").addEventListener("click", deleteGameClickedNo);
+
   //Update//
   document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
-  document.querySelector("#form-update-game").addEventListener("click", updateGameClickedNo);
+
+  //Sort - Filter//
 
   document.querySelector("#sort-games").addEventListener("change", sortBy);
 
@@ -135,14 +140,16 @@ function showGames(gameObject) {
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
   document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
   document.querySelector("#games article:last-child .btn-delete").addEventListener("click", () => deleteClicked(gameObject));
-  document.querySelector("#games article:last-child").addEventListener("click", gameClicked);
-
-  function gameClicked() {
-    showDialog(gameObject);
-  }
+  document.querySelector("#games article:last-child").addEventListener("click", () => gameClicked(gameObject));
 }
 
 //-------------------Show Dialog----------------------//
+
+function gameClicked(gameObject) {
+  console.log("Detail view opened");
+  showDialog(gameObject);
+  document.querySelector("#dialog-show").showModal();
+}
 
 function showDialog(gameObject) {
   document.querySelector("#image").src = gameObject.image;
@@ -150,13 +157,13 @@ function showDialog(gameObject) {
   document.querySelector("#resume").textContent = gameObject.resume;
   document.querySelector("#rating").textContent = gameObject.rating;
   document.querySelector("#genre").textContent = gameObject.genre;
-  document.querySelector("#dialog-show").showModal();
 }
 
 //-------------------Update and Delete----------------------//
 
 //update
 function updateClicked(gameObject) {
+  console.log("Update button clicked");
   const updateForm = document.querySelector("#form-update-game");
   const dialog = document.querySelector("#dialog-update-game");
 
@@ -171,6 +178,7 @@ function updateClicked(gameObject) {
   //Closes dialog on x click
   dialog.querySelector(".close").addEventListener("click", () => {
     dialog.close();
+    console.log("Update view closed");
   });
 }
 
@@ -191,11 +199,6 @@ async function updateGameClicked(event) {
 
     updateGame(id, title, rating, image, genre, resume);
   }
-  document.querySelector("#dialog-update-game").close();
-}
-
-async function updateGameClickedNo() {
-  console.log("Close update dialog");
   document.querySelector("#dialog-update-game").close();
 }
 
