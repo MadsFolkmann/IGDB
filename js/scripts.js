@@ -16,32 +16,31 @@ function initApp() {
   document.querySelector("#form-delete-game").addEventListener("click", deleteGameClickedNo);
   //Update//
   document.querySelector("#form-update-game").addEventListener("submit", updateGameClicked);
+  document.querySelector("#form-update-game").addEventListener("click", updateGameClickedNo);
+
   document.querySelector("#sort-games").addEventListener("change", sortBy);
 
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 
-  document.querySelector("#filter-games").addEventListener("change", filterGamesChanged)
+  document.querySelector("#filter-games").addEventListener("change", filterGamesChanged);
 }
 
 // ---------------------filter and Sort games-----------------------//
 
-
 function filterGamesChanged(event) {
   const value = event.target.value;
-  console.log(value)
-  const gamesToShow = filterGames(value)
-  console.log(gamesToShow)
-  displayGames(gamesToShow)
+  console.log(value);
+  const gamesToShow = filterGames(value);
+  console.log(gamesToShow);
+  displayGames(gamesToShow);
 }
 
-
- function filterGames(filterSelected) {
-   console.log(filterSelected)
-   console.log(games)
-   return games.filter((game) => game.genre.includes(filterSelected))
-   
-  }
+function filterGames(filterSelected) {
+  console.log(filterSelected);
+  console.log(games);
+  return games.filter((game) => game.genre.includes(filterSelected));
+}
 
 function inputSearchChanged(event) {
   const value = event.target.value;
@@ -136,6 +135,22 @@ function showGames(gameObject) {
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
   document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
   document.querySelector("#games article:last-child .btn-delete").addEventListener("click", () => deleteClicked(gameObject));
+  document.querySelector("#games article:last-child").addEventListener("click", gameClicked);
+
+  function gameClicked() {
+    showDialog(gameObject);
+  }
+}
+
+//-------------------Show Dialog----------------------//
+
+function showDialog(gameObject) {
+  document.querySelector("#image").src = gameObject.image;
+  document.querySelector("#title").textContent = gameObject.title;
+  document.querySelector("#resume").textContent = gameObject.resume;
+  document.querySelector("#rating").textContent = gameObject.rating;
+  document.querySelector("#genre").textContent = gameObject.genre;
+  document.querySelector("#dialog-show").showModal();
 }
 
 //-------------------Update and Delete----------------------//
@@ -160,6 +175,7 @@ function updateClicked(gameObject) {
 }
 
 async function updateGameClicked(event) {
+  console.log("Update button clicked");
   event.preventDefault();
   const form = event.target;
   const id = event.target.getAttribute("data-id");
@@ -175,6 +191,11 @@ async function updateGameClicked(event) {
 
     updateGame(id, title, rating, image, genre, resume);
   }
+  document.querySelector("#dialog-update-game").close();
+}
+
+async function updateGameClickedNo() {
+  console.log("Close update dialog");
   document.querySelector("#dialog-update-game").close();
 }
 
@@ -206,8 +227,6 @@ function deleteGameClickedNo() {
   console.log("Close delete dialog");
   document.querySelector("#dialog-delete-game").close();
 }
-
-
 
 //-------Refresh ved click af IGDB-------//
 const igdbImg = document.querySelector("#igdb-img");

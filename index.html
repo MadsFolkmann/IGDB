@@ -49,6 +49,27 @@
       <section id="games" class="grid-container"></section>
     </main>
 
+<dialog id="dialog-show" class="dialog-game">
+      <img src="pictures/favicon.ico" alt="Logo" class="logo" />
+      <section class="dialog-game">
+                <figure><img id="image" src="" /></figure>
+       <!-- <figure><img type="url" id="image" name="image" class="image" /></figure>  -->
+        <article>
+          <h2 id="title"></h2>
+          <h3 id="resume"></h3>
+          <h3 id="rating"></h3>
+          <p id="genre"> </p>
+
+
+        </article>
+      </section>
+
+      <form method="dialog">
+        <button id="btn_close_dialog">CLOSE</button>
+      </form>
+    </dialog>
+    
+
     <dialog id="dialog-create-game" class="dialog-game">
       <img src="pictures/favicon.ico" alt="Logo" class="logo" />
       <h1>Add game</h1>
@@ -121,16 +142,18 @@
         <input type="number" id="update-rating" name="rating" placeholder="Type a rating" min="1" max="10" required /><br /><br />
         
         <input type="submit" value="Update" />
+ <button type="button" class="btn-cancel">No</button>
+
       </form>
       <button class="close" type="button">X</button>
     </dialog>
 
     <dialog id="dialog-delete-game">
       <h2>Do you want to delete post?</h2>
-      <p id="title-of-the-game">Title of post</p>
+      <p id="title-of-the-game">Title of game</p>
       <form method="dialog" id="form-delete-game">
         <button type="button" class="btn-cancel">No</button>
-        <button>Yes</button>
+        <button  type="button" class="btn-cancel-yes">Yes</button>
       </form>
     </dialog>
 

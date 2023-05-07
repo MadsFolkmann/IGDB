@@ -11,6 +11,23 @@ header {
   padding: 10px;
   z-index: 9999;
 }
+#dialog-show .logo {
+  width: 50px;
+  height: 50px;
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+#dialog-show img {
+  width: 390px;
+  height: 390px;
+  object-position: top;
+}
+
+#logo {
+  width: 60px;
+  height: 60px;
+}
 
 /* Style for the IGDB logo image and sign in button */
 #igdb-img,
@@ -120,10 +137,9 @@ main {
   transition: all 0.3s ease-in-out;
 }
 
-
-
-
-#underHeader label, #sort-games, #filter-games {
+#underHeader label,
+#sort-games,
+#filter-games {
   display: inline-flex;
   align-items: center;
 }
@@ -140,7 +156,6 @@ main {
   gap: 1.5em;
   padding: 0.6em;
 }
-
 
 /*----------------- Grid item styling -----------------*/
 .grid-item {
@@ -201,10 +216,9 @@ main {
   width: 100%;
   height: 3em;
   max-width: 380px;
-margin-left: 20px;
+  margin-left: 20px;
   margin-right: 20px;
- border-radius: 50px;
-
+  border-radius: 50px;
 }
 button:hover {
   box-shadow: 0 8px 16px 0 #391707a4;
@@ -213,6 +227,36 @@ button:hover {
 .btns button:hover {
   background-color: yellow;
   color: black;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background-color: #f2eccc;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-cancel-yes {
+  background-color: yellow;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn_close_dialog {
+  background-color: yellow;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -227,7 +271,6 @@ button:hover {
     opacity: 1;
   }
 }
-
 
 #btn-create-game {
   display: inline-block;
@@ -248,7 +291,7 @@ button:hover {
 #btn-create-game:hover {
   transform: translateY(-2px);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}  
+}
 
 #dialog-create-game {
   width: 500px;
@@ -299,6 +342,25 @@ button:hover {
 }
 
 #dialog-create-game button.close {
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#dialog-show {
+  width: 500px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+#dialog-show button.close {
   background-color: transparent;
   border: none;
   color: #aaa;
@@ -394,7 +456,6 @@ button.close {
 button.close:hover {
   color: #f3ce13;
 }
-
 
 #sign-in {
   display: inline-block;
