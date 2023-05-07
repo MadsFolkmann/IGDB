@@ -138,8 +138,14 @@ function showGames(gameObject) {
   `;
 
   document.querySelector("#games").insertAdjacentHTML("beforeend", html);
-  document.querySelector("#games article:last-child .btn-update").addEventListener("click", () => updateClicked(gameObject));
-  document.querySelector("#games article:last-child .btn-delete").addEventListener("click", () => deleteClicked(gameObject));
+    document.querySelector("#games article:last-child .btn-update").addEventListener("click", (event) => {
+      event.stopPropagation();
+      updateClicked(gameObject);
+    });
+    document.querySelector("#games article:last-child .btn-delete").addEventListener("click", (event) => {
+      event.stopPropagation();
+      deleteClicked(gameObject);
+    });
   document.querySelector("#games article:last-child").addEventListener("click", () => gameClicked(gameObject));
 }
 

@@ -47,9 +47,21 @@ header {
 }
 
 #sign-in {
-  margin-left: 20px;
-  margin-right: 20px;
+  display: inline-block;
+  padding: 6px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #070707;
   background-color: #f3ce13;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+    margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* Style for the search input */
@@ -457,18 +469,4 @@ button.close:hover {
   color: #f3ce13;
 }
 
-#sign-in {
-  display: inline-block;
-  padding: 6px 6px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #070707;
-  background-color: #f3ce13;
-  border: none;
-  border-radius: 50px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
+
